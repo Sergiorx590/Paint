@@ -4,7 +4,8 @@ let color = document.getElementById("color").value;
 let background = document.getElementById("background");
 let width = 30;
 let tool = "Кисточка";
-let button = document.getElementById("tool");
+let button_tool = document.getElementById("tool");
+let button_clear = document.getElementById("clear");
 
 let displayWidth = cnv.clientWidth;
 let displayHeight = cnv.clientHeight;
@@ -53,9 +54,10 @@ function changeBackground(){
     ctx.fillRect(0, 0, cnv.width, cnv.height);
 }
 
-button.addEventListener("click", changeTool);
+button_tool.addEventListener("click", changeTool);
 
 function changeTool(){
+    
     let btn = document.getElementById("tool");
     if(btn.textContent == "Кисточка"){
         btn.textContent = "Ластик";
@@ -65,4 +67,11 @@ function changeTool(){
         btn.textContent = "Кисточка";
         tool = "Кисточка";
     }
+}
+button_clear.addEventListener("click", clearCanvas); 
+function clearCanvas(){
+    ctx.clearRect(0,0,cnv.width,cnv.height)
+    ctx.fillStyle = background.value;
+    
+    ctx.fillRect(0,0,cnv.width,cnv.height)
 }
