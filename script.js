@@ -45,16 +45,12 @@ document.getElementById("save_image").onclick = function(){
 cnv.onmousedown = (e) => {
     setTimeout(() => {
         cnv.onmousemove = (event) => {
-            
-        };if(tool == "Кисточка")
+            if(tool == "Кисточка")
                 ctx.fillStyle = color;
-            elseif(tool == "Кисточка")
-            ctx.fillStyle = color;
-        else
-            ctx.fillStyle = background.value;
-        ctx.fillRect(event.offsetX - width/2, event.offsetY- width/2, width, width);
+            else
                 ctx.fillStyle = background.value;
             ctx.fillRect(event.offsetX - width/2, event.offsetY- width/2, width, width);
+        };
     }, 1);
     if(tool == "Кисточка")
         ctx.fillStyle = color;
