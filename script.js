@@ -1,31 +1,32 @@
-let cnv = document.getElementById("canvas");
-let cnv_bg = document.getElementById("bg_layer");
+let cnv = document.getElementById("canvas");// ххолдст для рисования
+let cnv_bg = document.getElementById("bg_layer");//задний фон
 let ctx = cnv.getContext("2d");
 let ctx_bg = cnv_bg.getContext("2d");
-let color = document.getElementById("color").value;
-let background = document.getElementById("background");
+let color = document.getElementById("color").value;//кисть
+let background = document.getElementById("background");// ссыль на кнопку
 let width = 30;
-let tool = "Кисточка";
-let button_tool = document.getElementById("tool");
-let button_clear = document.getElementById("clear");
-
+let tool = "Кисточка"; //инструмент сейчас
+let button_tool = document.getElementById("tool");//смена инструмента
+let button_clear = document.getElementById("clear");//очистка
+//размер холста по размерам видимой части элемента канлвас
 let displayWidth = cnv.clientWidth;
 let displayHeight = cnv.clientHeight;
 cnv.width = displayWidth;
 cnv.height = displayHeight;
 cnv_bg.width = displayWidth;
 cnv_bg.height = displayHeight;
+//устанавливаем цвет для холста-фона
 ctx_bg.fillStyle = background.value;
 ctx_bg.fillRect(0, 0, cnv_bg.width, cnv_bg.height);
-
+// смена цвета кистлочки 
 document.getElementById("color").oninput = function(){
     color = this.value;
 }
-
+// смена толщины кисточки 
 document.getElementById("size").oninput = function(){
     width = this.value;
 }
-
+// сохралнение холстов в виде картинки 
 document.getElementById("save_image").onclick = function(){
     let cnv_save = document.getElementById("save_canvas");
     let ctx_save = cnv_save.getContext("2d");
@@ -34,7 +35,7 @@ document.getElementById("save_image").onclick = function(){
     ctx_save.save();
     ctx_save.drawImage(cnv_bg, 0, 0, cnv.width, cnv.height);
     ctx.save();
-    ctx.fillStyle = 'rgba(255,0,0,.4)';
+   // холсохранения на зайний фон 
     ctx_save.drawImage(cnv, 0, 0, cnv.width, cnv.height);
     //cnv_save.style.zIndex = 5;
     let image = cnv_save.toDataURL("image/jpg");
@@ -44,17 +45,21 @@ document.getElementById("save_image").onclick = function(){
 cnv.onmousedown = (e) => {
     setTimeout(() => {
         cnv.onmousemove = (event) => {
-            if(tool == "Кисточка")
+            
+        };if(tool == "Кисточка")
                 ctx.fillStyle = color;
-            else
+            elseif(tool == "Кисточка")
+            ctx.fillStyle = color;
+        else
+            ctx.fillStyle = background.value;
+        ctx.fillRect(event.offsetX - width/2, event.offsetY- width/2, width, width);
                 ctx.fillStyle = background.value;
             ctx.fillRect(event.offsetX - width/2, event.offsetY- width/2, width, width);
-        };
     }, 1);
     if(tool == "Кисточка")
-                ctx.fillStyle = color;
-            else
-                ctx.fillStyle = background.value;
+        ctx.fillStyle = color;
+    else
+        ctx.fillStyle = background.value;
     ctx.fillRect(e.offsetX - width/2, e.offsetY- width/2, width, width);
     cnv.onmouseup = () => {
         cnv.onmousemove = null;
@@ -67,7 +72,7 @@ function changeBackground(){
     ctx_bg.fillStyle = background.value;
     ctx_bg.fillRect(0, 0, cnv_bg.width, cnv_bg.height);
 }
-
+// ждем событие изменения
 button_tool.addEventListener("click", changeTool);
 
 function changeTool(){
@@ -86,6 +91,5 @@ button_clear.addEventListener("click", clearCanvas);
 
 function clearCanvas(){
     ctx.clearRect(0, 0, cnv.width, cnv.height);
-    ctx.fillStyle = background.value;
-    ctx.fillRect(0, 0, cnv.width, cnv.height);
+    
 }
