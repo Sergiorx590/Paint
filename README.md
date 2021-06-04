@@ -15,4 +15,5 @@ CSS — это язык, который вы используете для ст�
 
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpNYLQj1JDQnc-3-k_3aFpAdcMI71NeOnOqKtrFzELb_rZxj4T2n2paK9Amxty89opXVI&usqp=CAU)
 JavaScript — мультипарадигменный язык программирования.Наиболее широкое применение находит в браузерах как язык сценариев для придания интерактивности веб-страницам.
+
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/120px-Unofficial_JavaScript_logo_2.svg.png)
