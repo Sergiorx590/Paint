@@ -69,7 +69,7 @@ cnv.ontouchmove = (event) => {
         ctx.fillRect(event.changedTouches[0].pageX- cnv.getBoundingClientRect().left - width/2, event.changedTouches[0].pageY -cnv.getBoundingClientRect().top - width/2, width, width);
     }
     else
-        ctx.clearRect(event.changedTouches[0].pageX- cnv.getBoundingClientRect().left - width/2, event.changedTouches[0].pageY -cnv.getBoundingClientRect().top width/2, width, width);
+        ctx.clearRect(event.changedTouches[0].pageX- cnv.getBoundingClientRect().left - width/2, event.changedTouches[0].pageY -cnv.getBoundingClientRect().top- width/2, width, width);
 }
 
 //ждём событие изменение цвета для палитры заднего фона
